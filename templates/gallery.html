@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Gallery{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">— Inside the gym</p>
+    <h1>The <span class="accent">gallery</span></h1>
+    <p class="page-sub">A look at the kind of training, equipment and energy you'll find at Muscle Up Gym — across strength, cardio, HIIT, yoga and personal coaching.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="gallery-intro">
+    <div class="gallery-meta">
+      <h2 class="section-head">Gym images by zone</h2>
+      <p class="gallery-description">Browse the gym through curated photos from our strength floor, free weights, cardio zone, HIIT area, yoga space and personal coaching sessions.</p>
+    </div>
+    <div class="gallery-tags">
+      {% for category in gallery_categories %}
+      <span class="gallery-tag">{{ category }}</span>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="gallery-grid">
+    {% for item in gallery %}
+    <figure class="gallery-item {{ item.span }} {{ item.layout }}">
+      <img src="{{ url_for('static', filename='gallery/' ~ item.img) }}" alt="{{ item.caption }}" loading="lazy" />
+      <figcaption>
+        <span class="gallery-category">{{ item.category }}</span>
+        {{ item.caption }}
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+  <p class="gallery-note">Photos are representative of our facilities and training. Visit a branch for a free trial to experience it in person.</p>
+  <div class="center"><a href="{{ wa_general }}" target="_blank" rel="noopener" class="btn btn-primary">Book a Free Trial</a></div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Want a tour of the gym?</h2>
+    <p>Drop by either Salt Lake branch, or message us on WhatsApp to plan your visit.</p>
+    <a href="{{ wa_general }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Chat on WhatsApp</a>
+  </div>
+</section>
+{% endblock %}

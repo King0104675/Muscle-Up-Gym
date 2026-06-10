@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Branches{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">— Find us</p>
+    <h1>Two branches in <span class="accent">Salt Lake</span></h1>
+    <p class="page-sub">{{ gym.hours_line }}. Drop in for a free trial at whichever location is closer to you.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="branch-grid">
+    {% for b in branches %}
+    <div class="branch-card">
+      <h3>{{ b.name }}</h3>
+      <p class="branch-landmark">{{ b.landmark }}</p>
+      <p class="branch-addr">{{ b.address }}</p>
+      <div class="branch-actions">
+        <a href="{{ b.maps }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Open in Maps</a>
+        <a href="{{ wa_link('Hi! I would like to visit the ' ~ b.name ~ ' (' ~ b.landmark ~ ') for a free trial.') }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Book Trial Here</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="contact-info contact-info-row">
+    <div class="info-block">
+      <h3>Phone</h3>
+      <p><a href="tel:{{ gym.phone_primary_tel }}">{{ gym.phone_primary_display }}</a></p>
+      <p><a href="tel:{{ gym.phone_secondary_tel }}">{{ gym.phone_secondary_display }}</a></p>
+    </div>
+    <div class="info-block">
+      <h3>Email</h3>
+      <p><a href="mailto:{{ gym.email }}">{{ gym.email }}</a></p>
+    </div>
+    <div class="info-block">
+      <h3>Opening hours</h3>
+      {% for d, t in gym.hours %}<p class="hours-row"><span>{{ d }}</span><strong>{{ t }}</strong></p>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>See you on the floor.</h2>
+    <p>Message us on WhatsApp to confirm timings or book a free trial.</p>
+    <a href="{{ wa_general }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Chat on WhatsApp</a>
+  </div>
+</section>
+{% endblock %}

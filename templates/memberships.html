@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Membership{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">— Membership</p>
+    <h1>Join <span class="accent">Muscle Up</span></h1>
+    <p class="page-sub">Flexible memberships for both Salt Lake branches. Start with a free trial — then pick the plan that fits your goals and schedule.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="join-grid">
+    <div class="join-card">
+      <span class="step-num">1</span>
+      <h3>Book a Free Trial</h3>
+      <p>Message us on WhatsApp to schedule a free trial session at the branch nearest you.</p>
+    </div>
+    <div class="join-card">
+      <span class="step-num">2</span>
+      <h3>Meet a Trainer</h3>
+      <p>Tell us your goals — weight loss, muscle gain, bodybuilding, HIIT, CrossFit or yoga — and we'll guide you.</p>
+    </div>
+    <div class="join-card">
+      <span class="step-num">3</span>
+      <h3>Choose Your Plan</h3>
+      <p>Pick a membership that suits you. We'll share current plans, durations and offers over WhatsApp or at the gym.</p>
+    </div>
+  </div>
+
+  <div class="price-note">
+    <h3>Membership plans &amp; pricing</h3>
+    <p>We tailor plans to your goals and the branch you train at, and we run trial offers from time to time. For the latest membership durations, current pricing and any ongoing offers, message us on WhatsApp or call the gym — we'll get you the exact details right away.</p>
+    <div class="price-note-actions">
+      <a href="{{ wa_link('Hi Muscle Up Gym! Please share your current membership plans, durations and pricing.') }}" target="_blank" rel="noopener" class="btn btn-primary">Get Plans &amp; Pricing on WhatsApp</a>
+      <a href="tel:{{ gym.phone_primary_tel }}" class="btn btn-outline">Call {{ gym.phone_primary_display }}</a>
+    </div>
+  </div>
+
+  <div class="compare-note">
+    <h3>Every membership includes</h3>
+    <div class="includes">
+      {% for a in amenities %}<span>{{ a }}</span>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Ready to start training?</h2>
+    <p>Your first session is free. Book it on WhatsApp today.</p>
+    <a href="{{ wa_general }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Book Free Trial</a>
+  </div>
+</section>
+{% endblock %}

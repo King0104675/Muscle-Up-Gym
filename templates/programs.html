@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Programs{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">— What we offer</p>
+    <h1>Programs for <span class="accent">every goal</span></h1>
+    <p class="page-sub">From fat loss to bodybuilding, conditioning to mobility — pick a path or combine them with guidance from our trainers.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="program-full-grid">
+    {% for p in programs %}
+    <div class="program-full-card">
+      <div class="program-full-top">
+        <span class="program-tag">{{ p.level }}</span>
+        <h3>{{ p.title }}</h3>
+      </div>
+      <p>{{ p.desc }}</p>
+      <a href="{{ wa_link('Hi! I am interested in the ' ~ p.title ~ ' program at Muscle Up Gym. Can you share details and a free trial?') }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Enquire on WhatsApp</a>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="pt-banner">
+    <div>
+      <span class="program-tag">Personalised</span>
+      <h3>{{ pt.title }}</h3>
+      <p>{{ pt.desc }}</p>
+    </div>
+    <a href="{{ wa_link('Hi! I would like details about personal training options and rates at Muscle Up Gym.') }}" target="_blank" rel="noopener" class="btn btn-primary">Ask About Personal Training</a>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Not sure where to start?</h2>
+    <p>Tell us your goals on WhatsApp and we'll recommend the right program — plus a free trial session.</p>
+    <a href="{{ wa_general }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Get a Free Recommendation</a>
+  </div>
+</section>
+{% endblock %}

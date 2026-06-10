@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">— Salt Lake, Kolkata</p>
+    <h1 class="hero-title">MUSCLE<br><span class="accent">UP</span></h1>
+    <p class="hero-sub">{{ gym.tagline }} Two branches across Salt Lake with certified trainers, modern equipment and programs for every goal.</p>
+    <div class="hero-actions">
+      <a href="{{ wa_general }}" target="_blank" rel="noopener" class="btn btn-primary">Book a Free Trial</a>
+      <a href="{{ url_for('programs') }}" class="btn btn-ghost">View Programs</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong>2</strong><span>Salt Lake Branches</span></div>
+      <div><strong>6+</strong><span>Training Programs</span></div>
+      <div><strong>6 AM–10 PM</strong><span>Open Daily</span></div>
+      <div><strong>Free</strong><span>Trial Session</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="eyebrow">— Why Muscle Up</p>
+    <h2>Train where <span class="accent">Salt Lake</span> gets stronger</h2>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card"><span class="feat-num">01</span><h3>Well-Equipped Floor</h3><p>Air-conditioned space with cardio machines, treadmills, free weights, dumbbells and dedicated strength equipment.</p></div>
+    <div class="feature-card"><span class="feat-num">02</span><h3>Certified Trainers</h3><p>Supportive, experienced coaches to guide your form, plan your training and keep you accountable.</p></div>
+    <div class="feature-card"><span class="feat-num">03</span><h3>Two Locations</h3><p>Convenient branches in Sector 1 (near the swimming pool) and Sector 3 (near IB Block Park).</p></div>
+    <div class="feature-card"><span class="feat-num">04</span><h3>Open Every Day</h3><p>Train on your schedule — open Monday to Sunday, 6:00 AM to 10:00 PM, all week long.</p></div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="section-head">
+    <p class="eyebrow">— Our programs</p>
+    <h2>Choose your <span class="accent">goal</span></h2>
+  </div>
+  <div class="program-grid">
+    {% for p in programs %}
+    <div class="program-card">
+      <div class="program-tag">{{ p.level }}</div>
+      <h3>{{ p.title }}</h3>
+      <p>{{ p.short }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="center"><a href="{{ url_for('programs') }}" class="btn btn-primary">See All Programs</a></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="eyebrow">— Facilities</p>
+    <h2>What you <span class="accent">get</span></h2>
+  </div>
+  <div class="includes includes-left">
+    {% for a in amenities %}<span>{{ a }}</span>{% endfor %}
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Your first session is free.</h2>
+    <p>Message us on WhatsApp and we'll set up your free trial at the branch nearest you.</p>
+    <a href="{{ wa_general }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Book Free Trial on WhatsApp</a>
+  </div>
+</section>
+{% endblock %}

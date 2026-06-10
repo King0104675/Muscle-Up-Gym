@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">— Get in touch</p>
+    <h1>Let's <span class="accent">talk</span></h1>
+    <p class="page-sub">Fill the form and we'll continue the chat on WhatsApp — the fastest way to reach Muscle Up Gym.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="contact-grid">
+    <div class="contact-form-wrap">
+      <form method="POST" action="{{ url_for('contact') }}" class="contact-form">
+        <label>Full Name<input type="text" name="name" required placeholder="Your name"></label>
+        <label>Phone Number<input type="tel" name="phone" required placeholder="+91 …"></label>
+        <label>I'm interested in
+          <select name="interest">
+            <option>General Enquiry</option>
+            <option>Free Trial</option>
+            <option>Membership &amp; Pricing</option>
+            <option>Weight-Loss Plan</option>
+            <option>Muscle-Gain Plan</option>
+            <option>Bodybuilding</option>
+            <option>HIIT</option>
+            <option>CrossFit</option>
+            <option>Yoga</option>
+            <option>Personal Training</option>
+          </select>
+        </label>
+        <label>Message<textarea name="message" rows="4" placeholder="Tell us about your goals…"></textarea></label>
+        <button type="submit" class="btn btn-primary btn-block">Send via WhatsApp</button>
+        <p class="form-note">Submitting opens WhatsApp with your enquiry pre-filled.</p>
+      </form>
+    </div>
+    <div class="contact-info">
+      <div class="info-block">
+        <h3>Sector 3 Branch</h3>
+        <p>{{ branches[0].address }}</p>
+      </div>
+      <div class="info-block">
+        <h3>Sector 1 Branch</h3>
+        <p>{{ branches[1].address }}</p>
+      </div>
+      <div class="info-block">
+        <h3>Call or email</h3>
+        <p><a href="tel:{{ gym.phone_primary_tel }}">{{ gym.phone_primary_display }}</a></p>
+        <p><a href="tel:{{ gym.phone_secondary_tel }}">{{ gym.phone_secondary_display }}</a></p>
+        <p><a href="mailto:{{ gym.email }}">{{ gym.email }}</a></p>
+      </div>
+      <div class="info-block">
+        <h3>Opening hours</h3>
+        {% for d, t in gym.hours %}<p class="hours-row"><span>{{ d }}</span><strong>{{ t }}</strong></p>{% endfor %}
+      </div>
+      <a href="{{ wa_general }}" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">
+        <svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor"><path d="M16.04 4C9.93 4 4.98 8.95 4.98 15.06c0 2.06.57 4.06 1.65 5.82L4.8 27.2l6.5-1.7a11 11 0 0 0 4.74 1.07c6.1 0 11.05-4.95 11.05-11.06C27.1 8.95 22.14 4 16.04 4z"/></svg>
+        Chat Now on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

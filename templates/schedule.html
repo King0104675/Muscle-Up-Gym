@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Schedule{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">— Weekly classes</p>
+    <h1>Class <span class="accent">schedule</span></h1>
+    <p class="page-sub">Drop in to any class included with your membership. Booking via the app or WhatsApp.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="table-scroll">
+    <table class="schedule-table">
+      <thead>
+        <tr><th>Time</th>{% for d in days %}<th>{{ d }}</th>{% endfor %}</tr>
+      </thead>
+      <tbody>
+        {% for row in schedule %}
+        <tr>
+          <td class="time-cell">{{ row[0] }}</td>
+          {% for cls in row[1:] %}
+          <td>{% if cls != '—' %}<span class="cls cls-{{ cls|lower|replace(' ','') }}">{{ cls }}</span>{% else %}<span class="cls-empty">—</span>{% endif %}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="center"><a href="{{ wa_general }}" target="_blank" rel="noopener" class="btn btn-primary">Book a Class on WhatsApp</a></div>
+</section>
+{% endblock %}

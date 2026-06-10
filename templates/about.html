@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">— About us</p>
+    <h1>Salt Lake's <span class="accent">fitness home</span></h1>
+    <p class="page-sub">Muscle Up Gym is a well-equipped fitness centre in Salt Lake, Kolkata, with two branches and a reputation for friendly, supportive trainers.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="two-col">
+    <div>
+      <h2>Who we are</h2>
+      <p>Muscle Up Gym serves the Salt Lake (Bidhannagar) community with two convenient branches — one in Sector 1 near the swimming pool, and one in Sector 3 near IB Block Park.</p>
+      <p>Members describe the gym as clean, spacious and well-maintained, with cooperative, knowledgeable trainers and a supportive atmosphere. Whether your goal is losing weight, building muscle, getting stage-ready or simply staying active, there's a program and a coach here for you.</p>
+      <p>We keep our doors open every day of the week, from early morning to late evening, so your training fits around your life — not the other way around.</p>
+    </div>
+    <div class="about-cards">
+      <div class="value-card"><h3>Approach</h3><p>Friendly, hands-on coaching that meets you at your level and helps you progress safely.</p></div>
+      <div class="value-card"><h3>Community</h3><p>A welcoming, supportive environment where members and trainers push each other to improve.</p></div>
+      <div class="value-card"><h3>Access</h3><p>Open Mon–Sun, 6:00 AM – 10:00 PM, across two Salt Lake branches with parking.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="section-head">
+    <p class="eyebrow">— Facilities & amenities</p>
+    <h2>Everything you <span class="accent">need</span></h2>
+  </div>
+  <div class="includes">
+    {% for a in amenities %}<span>{{ a }}</span>{% endfor %}
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Come see the gym for yourself.</h2>
+    <p>Book a tour or a free trial — we reply fast on WhatsApp.</p>
+    <a href="{{ wa_general }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Message Us on WhatsApp</a>
+  </div>
+</section>
+{% endblock %}
